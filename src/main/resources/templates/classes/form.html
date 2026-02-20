@@ -1,0 +1,6 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><title>Class Form</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="p-6 bg-slate-50"><form th:action="@{/classes}" th:object="${classForm}" method="post" class="bg-white p-6 rounded shadow max-w-md mx-auto space-y-4">
+    <input th:field="*{name}" placeholder="Class Name" class="w-full border p-2"/>
+    <input th:field="*{yearlyFee}" type="number" step="0.01" placeholder="Yearly Fee" class="w-full border p-2"/>
+    <button class="bg-blue-600 text-white px-3 py-2 rounded">Save</button>
+</form></body></html>

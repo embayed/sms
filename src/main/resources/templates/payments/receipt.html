@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><title>Facture</title><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" th:href="@{/css/print.css}"></head>
+<body class="bg-slate-100"><div class="no-print p-4"><a th:href="@{'/students/' + ${student.id}}" class="text-blue-600">Back</a> <button onclick="window.print()" class="ml-3 bg-blue-600 text-white px-3 py-1 rounded">Print</button></div>
+<div class="max-w-xl mx-auto bg-white p-8 mt-4 shadow">
+    <h1 class="text-xl font-bold mb-4">Payment Facture</h1>
+    <p><b>Student:</b> <span th:text="${student.fullName}"></span></p>
+    <p><b>Amount Paid:</b> <span th:text="${payment.amount}"></span></p>
+    <p><b>Payment Date:</b> <span th:text="${payment.paymentDate}"></span></p>
+    <p class="mt-4 text-lg"><b>Total Rest:</b> <span th:text="${rest}"></span></p>
+</div></body></html>

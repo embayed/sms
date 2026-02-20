@@ -1,0 +1,6 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><title>Students</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50"><div class="p-4"><a href="/">Dashboard</a> | <a href="/classes">Classes</a></div>
+<div class="max-w-5xl mx-auto p-6"><a href="/students/new" class="bg-blue-600 text-white px-3 py-2 rounded">New Student</a>
+<table class="w-full mt-4 bg-white"><tr><th>Name</th><th>Current Class</th><th></th></tr>
+<tr th:each="s:${students}" class="border-t"><td th:text="${s.fullName}"></td><td th:text="${s.currentClass != null ? s.currentClass.name: 'N/A'}"></td>
+<td><a th:href="@{'/students/'+${s.id}}" class="text-blue-600">View</a></td></tr></table></div></body></html>
