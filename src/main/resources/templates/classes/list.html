@@ -1,0 +1,11 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><title>Classes</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50">
+<div class="p-4"><a href="/">Dashboard</a> | <a href="/students">Students</a></div>
+<div class="max-w-4xl mx-auto p-6">
+    <div th:if="${error}" class="bg-red-100 text-red-700 p-2 mb-3" th:text="${error}"></div>
+    <a href="/classes/new" class="bg-blue-600 text-white px-3 py-2 rounded">New Class</a>
+    <table class="w-full mt-4 bg-white"><tr><th>Name</th><th>Yearly Fee</th><th></th></tr>
+        <tr th:each="c : ${classes}" class="border-t"><td th:text="${c.name}"></td><td th:text="${c.yearlyFee}"></td>
+            <td><form th:action="@{'/classes/' + ${c.id} + '/delete'}" method="post"><button class="text-red-600">Delete</button></form></td></tr>
+    </table>
+</div></body></html>

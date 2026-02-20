@@ -1,0 +1,6 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><title>Edit Payment</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="p-6 bg-slate-50"><form th:action="@{'/students/' + ${studentId} + '/payments/' + ${payment.id} + '/edit'}" th:object="${paymentForm}" method="post" class="bg-white p-6 rounded shadow max-w-md mx-auto space-y-3">
+    <input th:field="*{amount}" type="number" step="0.01" class="w-full border p-2"/>
+    <input th:field="*{paymentDate}" type="date" class="w-full border p-2"/>
+    <button class="bg-blue-600 text-white px-3 py-2 rounded">Update Payment</button>
+</form></body></html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SFMS Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/css/print.css}">
+</head>
+<body class="bg-slate-50 text-slate-800">
+<div class="no-print bg-white shadow p-4 flex gap-4">
+    <a href="/" class="font-semibold">Dashboard</a>
+    <a href="/students">Students</a>
+    <a href="/classes">Classes</a>
+</div>
+<div class="max-w-6xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Management Dashboard</h1>
+    <table class="w-full bg-white rounded shadow overflow-hidden">
+        <thead class="bg-slate-100 text-left"><tr><th class="p-3">Student</th><th>Class</th><th>Total Rest</th><th>Status</th></tr></thead>
+        <tbody>
+        <tr th:each="s : ${students}" class="border-t">
+            <td class="p-3"><a th:href="@{'/students/' + ${s.id}}" class="text-blue-600" th:text="${s.fullName}"></a></td>
+            <td th:text="${s.currentClass != null ? s.currentClass.name : 'N/A'}"></td>
+            <td th:text="${rests[s.id]}"></td>
+            <td>
+                <span th:if="${rests[s.id] <= 0}" class="px-2 py-1 rounded bg-green-100 text-green-700">Paid</span>
+                <span th:if="${rests[s.id] > 0 and !arrears[s.id]}" class="px-2 py-1 rounded bg-yellow-100 text-yellow-700">Partial</span>
+                <span th:if="${arrears[s.id]}" class="px-2 py-1 rounded bg-red-100 text-red-700">Debt/Arrears</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
